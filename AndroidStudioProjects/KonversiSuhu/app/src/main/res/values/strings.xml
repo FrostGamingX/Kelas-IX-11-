@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">KonversiSuhu</string>
+    <string name="masukkan_suhu">Masukkan Suhu</string>
+    <string name="dari">Dari:</string>
+    <string name="ke">Ke:</string>
+    <string name="celsius">Celsius</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="kelvin">Kelvin</string>
+    <string name="reamur">Reamur</string>
+    <string name="konversi">Konversi</string>
+    <string name="hasil">Hasil: %1$s</string>
+    <string name="thermometer_icon">Ikon Termometer</string>
+    <string name="input_tidak_valid">Input tidak valid</string>
+    <string name="pilih_satuan_awal_dan_tujuan">Pilih satuan awal dan tujuan</string>
+
+    <string-array name="satuan_suhu_array">
+        <item>@string/celsius</item>
+        <item>@string/fahrenheit</item>
+        <item>@string/kelvin</item>
+        <item>@string/reamur</item>
+    </string-array>
+
+    <!-- <string name="app_name">Konversi Suhu</string> -->
+
+    <!-- <string name="hasil">Hasil: %1$s</string> -->
+
+    <!-- <string name="app_name">Konversi Suhu</string> -->
+
+    <!-- Ubah string 'hasil' untuk menggunakan placeholder -->
+
+</resources>
