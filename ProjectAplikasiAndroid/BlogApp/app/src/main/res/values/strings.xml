@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BlogApp</string>
+    <!-- Splash Screen -->
+    <string name="splash_title">BlogApp</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_message">Selamat Datang di BlogApp</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
+
+    <!-- Login Screen -->
+    <string name="login_title">Login</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_action">Login</string>
+    <string name="register_link">Belum punya akun? Register</string>
+    <string name="login_error_empty">Lengkapi email dan password</string>
+    <string name="login_error_failed">Login gagal: %1$s</string>
+
+    <!-- Register Screen -->
+    <string name="register_title">Register</string>
+    <string name="username_hint">Username</string>
+    <string name="register_action">Register</string>
+    <string name="login_link">Sudah punya akun? Login</string>
+    <string name="register_error_empty">Lengkapi semua field dan pilih foto!</string>
+    <string name="register_error_failed">Registrasi gagal: %1$s</string>
+    <string name="photo_upload_failed">Upload foto gagal</string>
+
+    <!-- Main Screen -->
+    <string name="search_hint">Cari artikel...</string>
+    <string name="add_post">Tambah Artikel</string>
+
+    <!-- Add Post Screen -->
+    <string name="add_post_title">Tambah Artikel</string>
+    <string name="title_hint">Judul</string>
+    <string name="description_hint">Deskripsi</string>
+    <string name="save_button">Simpan</string>
+    <string name="post_saved">Artikel disimpan</string>
+    <string name="post_error_empty">Lengkapi judul dan deskripsi</string>
+
+    <!-- Post Detail Screen -->
+    <string name="back_button">Kembali</string>
+    <string name="by_author">Oleh: %1$s</string>
+
+    <!-- Profile Screen -->
+    <string name="my_articles">Artikel Saya</string>
+    <string name="logout_button">Logout</string>
+
+    <!-- My Posts Screen -->
+    <string name="my_posts_title">Artikel Saya</string>
+
+    <!-- Edit Post Screen -->
+    <string name="edit_post_title">Edit Artikel</string>
+    <string name="save_changes">Simpan Perubahan</string>
+    <string name="changes_saved">Perubahan disimpan</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color> <!-- Warna utama (misalnya untuk toolbar, tombol) -->
+    <color name="colorPrimaryDark">#3700B3</color> <!-- Warna lebih gelap untuk status bar -->
+    <color name="colorAccent">#03DAC5</color> <!-- Warna aksen untuk elemen interaktif -->
+    <color name="colorBackground">#FFFFFF</color> <!-- Latar belakang utama -->
+    <color name="colorTextPrimary">#000000</color> <!-- Warna teks utama -->
+    <color name="colorTextSecondary">#757575</color> <!-- Warna teks sekunder -->
+    <color name="colorError">#D32F2F</color> <!-- Warna untuk pesan error -->
+</resources>
