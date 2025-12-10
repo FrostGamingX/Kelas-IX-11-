@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponorogo: The Spirit of Joy and Heritage</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-red: #8B1E3F;
+            --gold: #D4AF37;
+            --dark: #1a1a1a;
+            --forest: #2C5530;
+            --light-bg: #F8F6F3;
+            --white: #ffffff;
+            --gray: #6B7280;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader-reog {
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--gold);
+            border-top-color: var(--primary-red);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 1rem 5%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary-red) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: radial-gradient(circle, var(--gold) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: patternMove 20s linear infinite;
+        }
+        
+        @keyframes patternMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: var(--gold);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--gold);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-bottom: 5rem;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover .card-image {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+        
+        .card-text {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        .reog-section {
+            background: var(--light-bg);
+        }
+        
+        .reog-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+        
+        .reog-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .reog-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-red);
+        }
+        
+        .reog-text p {
+            color: var(--gray);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+        
+        .values-section {
+            background: var(--dark);
+            color: var(--white);
+        }
+        
+        .values-section .section-title {
+            color: var(--gold);
+        }
+        
+        .values-section .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .value-card {
+            padding: 3rem 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .value-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .value-card:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        
+        .value-card p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+        }
+        
+        .tradition-showcase {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--forest) 100%);
+            color: var(--white);
+            padding: 6rem 5%;
+            text-align: center;
+            margin: 5rem 0;
+        }
+        
+        .tradition-showcase blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            position: relative;
+            padding: 2rem;
+        }
+        
+        .tradition-showcase blockquote::before {
+            content: '"';
+            font-size: 6rem;
+            position: absolute;
+            top: -2rem;
+            left: -1rem;
+            color: var(--gold);
+            opacity: 0.3;
+        }
+        
+        .map-section {
+            padding: 6rem 5%;
+            background: var(--light-bg);
+        }
+        
+        .map-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            height: 600px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .map-container.hidden {
+            display: none;
+        }
+        
+        .map-placeholder {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray);
+        }
+        
+        .map-placeholder h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+        
+        #interactive-map {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        #interactive-map.active {
+            display: block;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.95);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 300px;
+            z-index: 10;
+        }
+        
+        .map-overlay h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .map-overlay p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .close-map {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 11;
+            transition: all 0.3s ease;
+            display: none;
+        }
+        
+        .close-map.active {
+            display: block;
+        }
+        
+        .close-map:hover {
+            background: var(--gold);
+            color: var(--dark);
+            transform: rotate(90deg);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+        
+        footer p {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .reog-highlight {
+                grid-template-columns: 1fr;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 4rem 5%;
+            }
+            
+            .tradition-showcase blockquote {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader">
+        <div class="loader-reog"></div>
+    </div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">PONOROGO</a>
+            <ul class="nav-links">
+                <li><a href="#reog">Kesenian</a></li>
+                <li><a href="#pakaian">Pakaian Adat</a></li>
+                <li><a href="#kuliner">Kuliner</a></li>
+                <li><a href="#nilai">Nilai Budaya</a></li>
+                <li><a href="#peta">Kunjungi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <h1>PONOROGO</h1>
+            <p class="subtitle">The Spirit of Joy and Heritage</p>
+            <a href="#reog" class="cta-button">Jelajahi Ponorogo</a>
+        </div>
+    </section>
+
+    <section id="reog" class="reog-section">
+        <h2 class="section-title fade-in">Kesenian Daerah</h2>
+        <p class="section-subtitle fade-in">Warisan budaya yang mendunia dari Bumi Reog</p>
+        
+        <div class="reog-highlight fade-in">
+            <img src="images/Reog_Ponorogo.jpg" alt="Pertunjukan Reog Ponorogo dengan Singo Barong" class="reog-image">
+            <div class="reog-text">
+                <h3>Reog Ponorogo</h3>
+                <p>Reog Ponorogo adalah kesenian tradisional yang menjadi kebanggaan Kabupaten Ponorogo. Pertunjukan spektakuler ini menampilkan Singo Barong dengan topeng barongan raksasa yang memukau, diiringi tarian Warok yang gagah berani dan Jathil yang anggun.</p>
+                <p>Reog bukan sekadar tarian, melainkan simbol keberanian, kekuatan, dan semangat kepahlawanan masyarakat Ponorogo yang telah diwariskan turun temurun sejak ratusan tahun lalu.</p>
+                <p>Setiap gerakan dalam Reog memiliki filosofi mendalam tentang perjuangan, kesetiaan, dan harmoni antara manusia dengan alam semesta.</p>
+            </div>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <img src="images/singo_barong.jpg" alt="Topeng Singo Barong dengan mahkota bulu merak" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Singo Barong</h3>
+                    <p class="card-text">Topeng raksasa berbentuk kepala singa dengan mahkota merak yang menjadi ikon utama Reog Ponorogo. Beratnya mencapai 50-60 kg, menggambarkan kekuatan dan keberanian luar biasa.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/warok.jpg" alt="Penari Warok dengan pakaian hitam" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Warok</h3>
+                    <p class="card-text">Penari pria dengan pakaian serba hitam yang menggambarkan sosok ksatria penuh wibawa. Warok adalah simbol kekuatan fisik dan spiritual yang menjaga keseimbangan alam.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/jathilan.jpg" alt="Penari Jathil dengan kostum warna-warni" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Jathil/Jathilan</h3>
+                    <p class="card-text">Penari wanita yang menunggang kuda kepang dengan gerakan lincah dan energik. Jathil menggambarkan keanggunan dan kegembiraan dalam pertunjukan Reog.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pakaian">
+        <h2 class="section-title fade-in">Pakaian Adat</h2>
+        <p class="section-subtitle fade-in">Busana tradisional yang sarat makna dan filosofi</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <img src="images/busana_warok.jpg" alt="Pakaian Warok berwarna hitam dengan ikat kepala" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Busana Warok</h3>
+                    <p class="card-text">Pakaian serba hitam melambangkan kesederhanaan, kewibawaan, dan disiplin diri yang tinggi. Warok mengenakan celana hitam, baju hitam, ikat kepala, dan sabuk sebagai simbol pengendalian diri dan kekuatan spiritual.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/busana_jathil.jpg" alt="Kostum Jathil berwarna-warni dengan aksesoris" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Busana Jathil</h3>
+                    <p class="card-text">Kostum penari Jathil berwarna-warni dengan aksesoris berkilau yang mempesona. Busana ini melambangkan kegembiraan, keindahan, dan semangat hidup masyarakat Ponorogo yang penuh energi positif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kuliner" class="reog-section">
+        <h2 class="section-title fade-in">Kuliner Khas</h2>
+        <p class="section-subtitle fade-in">Cita rasa autentik yang menggugah selera</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <img src="images/Resep-Sate-Ponorogo.webp" alt="Sate Ponorogo dengan bumbu kacang kental" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Sate Ponorogo</h3>
+                    <p class="card-text">Sate khas Ponorogo dengan bumbu kacang yang gurih dan sedikit pedas. Keunikannya terletak pada potongan daging yang tebal dan bumbu kacang yang kental, disajikan dengan lontong dan kuah bumbu yang kaya rempah.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/nasi_pecel.jpeg" alt="Nasi Pecel Ponorogo dengan sayuran segar" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Nasi Pecel Ponorogo</h3>
+                    <p class="card-text">Nasi pecel dengan bumbu kacang khas Ponorogo yang lebih manis dan gurih. Disajikan dengan aneka sayuran rebus, rempeyek, dan kerupuk, menciptakan harmoni rasa yang sempurna.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/gethuk.jpg" alt="Gethuk berbahan singkong dengan gula kelapa" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Gethuk Golan</h3>
+                    <p class="card-text">Jajanan tradisional berbahan dasar singkong yang dihaluskan dengan gula kelapa. Teksturnya lembut dengan rasa manis alami yang menggambarkan kesederhanaan dan kehangatan budaya Ponorogo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pekerjaan">
+        <h2 class="section-title fade-in">Kehidupan Masyarakat</h2>
+        <p class="section-subtitle fade-in">Keberagaman profesi yang membangun Ponorogo</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <img src="images/pertanian.jpg" alt="Petani di sawah Ponorogo" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Pertanian</h3>
+                    <p class="card-text">Sawah dan ladang menjadi sumber kehidupan utama masyarakat Ponorogo. Petani dengan kegigihan dan gotong royong menghasilkan padi, jagung, dan palawija berkualitas untuk kemandirian pangan.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/pengrajin.jpg" alt="Pengrajin membuat topeng Reog" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Pengrajin Reog</h3>
+                    <p class="card-text">Pembuat topeng Singo Barong dan perlengkapan Reog yang melestarikan warisan budaya. Setiap karya adalah hasil ketelitian dan dedikasi tinggi yang diwariskan dari generasi ke generasi.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/pedagang.jpg" alt="Pedagang di pasar tradisional Ponorogo" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">UMKM & Pedagang</h3>
+                    <p class="card-text">Pasar tradisional dan usaha mikro menjadi jantung ekonomi lokal. Pedagang dengan keramahan khas Ponorogo menawarkan produk berkualitas yang mendukung kemandirian ekonomi masyarakat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tradition-showcase">
+        <h2 class="section-title" style="color: white; margin-bottom: 3rem;">Tradisi Luhur</h2>
+        <blockquote>
+            Grebeg Suro dan Larungan Doa di Telaga Ngebel adalah wujud syukur dan doa masyarakat Ponorogo kepada sang pencipta. Tradisi ini mempersatukan komunitas dalam kebersamaan spiritual yang menjaga keseimbangan antara manusia, alam, dan leluhur.
+        </blockquote>
+    </section>
+
+    <section id="nilai" class="values-section">
+        <h2 class="section-title">Nilai Inti Budaya Ponorogo</h2>
+        <p class="section-subtitle">Filosofi hidup yang menjadi pegangan masyarakat</p>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🦁</div>
+                <h3>Keberanian</h3>
+                <p>Semangat kepahlawanan dan keberanian dalam menghadapi tantangan hidup, seperti yang disimbolkan oleh Singo Barong dalam pertunjukan Reog.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Gotong Royong</h3>
+                <p>Kekuatan komunitas dalam persatuan dan kebersamaan. Setiap individu berkontribusi untuk kesejahteraan bersama dengan penuh tanggung jawab.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🙏</div>
+                <h3>Spiritualitas</h3>
+                <p>Kepercayaan dan penghormatan terhadap alam, leluhur, dan kekuatan spiritual yang membimbing kehidupan sehari-hari masyarakat Ponorogo.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">⚖️</div>
+                <h3>Keseimbangan Hidup</h3>
+                <p>Filosofi Warok tentang pengendalian diri dan disiplin yang mengajarkan keseimbangan antara kekuatan fisik, mental, dan spiritual.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🎨</div>
+                <h3>Pelestarian Budaya</h3>
+                <p>Komitmen kuat untuk melestarikan dan mewariskan kekayaan budaya kepada generasi mendatang tanpa kehilangan identitas.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">❤️</div>
+                <h3>Keramahan</h3>
+                <p>Kehangatan dan keramahan masyarakat Ponorogo dalam menyambut setiap tamu, mencerminkan nilai-nilai kesederhanaan dan keterbukaan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analisis Harmoni Section -->
+    <section id="analisis" style="background: var(--light-bg);">
+        <h2 class="section-title fade-in">Analisis Harmoni dalam Keberagaman</h2>
+        <p class="section-subtitle fade-in">Evaluasi pemahaman tentang harmoni berdasarkan budaya Ponorogo</p>
+        
+        <div style="max-width: 1200px; margin: 0 auto; overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08);" class="fade-in">
+                <thead>
+                    <tr style="background: linear-gradient(135deg, var(--primary-red) 0%, var(--forest) 100%); color: white;">
+                        <th style="padding: 1.5rem; text-align: center; font-family: 'Playfair Display', serif; font-size: 1.1rem; width: 80px;">No</th>
+                        <th style="padding: 1.5rem; text-align: left; font-family: 'Playfair Display', serif; font-size: 1.1rem;">Pernyataan</th>
+                        <th style="padding: 1.5rem; text-align: center; font-family: 'Playfair Display', serif; font-size: 1.1rem; width: 120px;">Benar</th>
+                        <th style="padding: 1.5rem; text-align: center; font-family: 'Playfair Display', serif; font-size: 1.1rem; width: 120px;">Salah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #E5E7EB; transition: all 0.3s ease;" onmouseover="this.style.background='var(--light-bg)'" onmouseout="this.style.background='white'">
+                        <td style="padding: 1.5rem; text-align: center; font-weight: 600; color: var(--primary-red); font-size: 1.2rem;">1</td>
+                        <td style="padding: 1.5rem; line-height: 1.8; color: var(--dark);">Harmoni dalam keberagaman sangat penting untuk menciptakan lingkungan kerja yang inklusif dan produktif.</td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #10B981; color: white; border-radius: 50%; line-height: 30px; font-weight: bold;">✓</span></td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #E5E7EB; color: #9CA3AF; border-radius: 50%; line-height: 30px;">✗</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #E5E7EB; transition: all 0.3s ease;" onmouseover="this.style.background='var(--light-bg)'" onmouseout="this.style.background='white'">
+                        <td style="padding: 1.5rem; text-align: center; font-weight: 600; color: var(--primary-red); font-size: 1.2rem;">2</td>
+                        <td style="padding: 1.5rem; line-height: 1.8; color: var(--dark);">Keberagaman pekerjaan tidak berkontribusi pada penciptaan harmoni di lingkungan kerja.</td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #E5E7EB; color: #9CA3AF; border-radius: 50%; line-height: 30px;">✓</span></td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #EF4444; color: white; border-radius: 50%; line-height: 30px; font-weight: bold;">✗</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #E5E7EB; transition: all 0.3s ease;" onmouseover="this.style.background='var(--light-bg)'" onmouseout="this.style.background='white'">
+                        <td style="padding: 1.5rem; text-align: center; font-weight: 600; color: var(--primary-red); font-size: 1.2rem;">3</td>
+                        <td style="padding: 1.5rem; line-height: 1.8; color: var(--dark);">Menerapkan nilai harmoni dalam keberagaman dapat membantu mengurangi konflik dan meningkatkan produktivitas di lingkungan masyarakat dan lingkungan kerja.</td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #10B981; color: white; border-radius: 50%; line-height: 30px; font-weight: bold;">✓</span></td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #E5E7EB; color: #9CA3AF; border-radius: 50%; line-height: 30px;">✗</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #E5E7EB; transition: all 0.3s ease;" onmouseover="this.style.background='var(--light-bg)'" onmouseout="this.style.background='white'">
+                        <td style="padding: 1.5rem; text-align: center; font-weight: 600; color: var(--primary-red); font-size: 1.2rem;">4</td>
+                        <td style="padding: 1.5rem; line-height: 1.8; color: var(--dark);">Menciptakan harmoni dalam keberagaman merupakan tanggung jawab pimpinan di tempat kerja, bukan tanggung jawab karyawan.</td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #E5E7EB; color: #9CA3AF; border-radius: 50%; line-height: 30px;">✓</span></td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #EF4444; color: white; border-radius: 50%; line-height: 30px; font-weight: bold;">✗</span></td>
+                    </tr>
+                    <tr style="transition: all 0.3s ease;" onmouseover="this.style.background='var(--light-bg)'" onmouseout="this.style.background='white'">
+                        <td style="padding: 1.5rem; text-align: center; font-weight: 600; color: var(--primary-red); font-size: 1.2rem;">5</td>
+                        <td style="padding: 1.5rem; line-height: 1.8; color: var(--dark);">Toleransi dan harmoni dalam keberagaman adalah konsep yang sama dan dapat digunakan secara bergantian.</td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #E5E7EB; color: #9CA3AF; border-radius: 50%; line-height: 30px;">✓</span></td>
+                        <td style="padding: 1.5rem; text-align: center;"><span style="display: inline-block; width: 30px; height: 30px; background: #EF4444; color: white; border-radius: 50%; line-height: 30px; font-weight: bold;">✗</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Penjelasan Detail -->
+        <div style="margin-top: 5rem;">
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-content" style="padding: 2.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                            <span style="display: inline-block; width: 40px; height: 40px; background: #10B981; color: white; border-radius: 50%; line-height: 40px; text-align: center; font-size: 1.5rem; font-weight: bold;">1</span>
+                            <h3 class="card-title" style="margin: 0;">Harmoni untuk Inklusivitas</h3>
+                        </div>
+                        <div style="padding-left: 3.5rem;">
+                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--primary-red);">Jawaban: BENAR ✓</strong></p>
+                            <p style="color: var(--gray); line-height: 1.8;">Website menampilkan keberagaman pekerjaan masyarakat (petani, pengrajin, pedagang). Nilai Gotong Royong menekankan kekuatan komunitas dalam persatuan. Tradisi seperti Grebeg Suro mempersatukan komunitas dalam kebersamaan spiritual yang menciptakan kemandirian ekonomi lokal yang produktif.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content" style="padding: 2.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                            <span style="display: inline-block; width: 40px; height: 40px; background: #EF4444; color: white; border-radius: 50%; line-height: 40px; text-align: center; font-size: 1.5rem; font-weight: bold;">2</span>
+                            <h3 class="card-title" style="margin: 0;">Kontribusi Keberagaman</h3>
+                        </div>
+                        <div style="padding-left: 3.5rem;">
+                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--primary-red);">Jawaban: SALAH ✗</strong></p>
+                            <p style="color: var(--gray); line-height: 1.8;">Materi "Kehidupan Masyarakat" justru menunjukkan keberagaman profesi (pertanian, kerajinan, perdagangan) saling melengkapi. Nilai "Kegigihan, Gotong Royong, Kemandirian Ekonomi Lokal" ditonjolkan. Pengrajin Reog, petani, dan pedagang bekerja bersama menjaga warisan budaya, menciptakan ekosistem yang harmonis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content" style="padding: 2.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                            <span style="display: inline-block; width: 40px; height: 40px; background: #10B981; color: white; border-radius: 50%; line-height: 40px; text-align: center; font-size: 1.5rem; font-weight: bold;">3</span>
+                            <h3 class="card-title" style="margin: 0;">Mengurangi Konflik</h3>
+                        </div>
+                        <div style="padding-left: 3.5rem;">
+                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--primary-red);">Jawaban: BENAR ✓</strong></p>
+                            <p style="color: var(--gray); line-height: 1.8;">Nilai Spiritualitas mengajarkan penghormatan yang membimbing kehidupan. Nilai Keseimbangan Hidup dari filosofi Warok tentang pengendalian diri. Tradisi Larungan menjaga keseimbangan manusia, alam, dan leluhur. Nilai Keramahan mencerminkan keterbukaan terhadap perbedaan, menciptakan persatuan komunitas yang kuat.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content" style="padding: 2.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                            <span style="display: inline-block; width: 40px; height: 40px; background: #EF4444; color: white; border-radius: 50%; line-height: 40px; text-align: center; font-size: 1.5rem; font-weight: bold;">4</span>
+                            <h3 class="card-title" style="margin: 0;">Tanggung Jawab Bersama</h3>
+                        </div>
+                        <div style="padding-left: 3.5rem;">
+                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--primary-red);">Jawaban: SALAH ✗</strong></p>
+                            <p style="color: var(--gray); line-height: 1.8;">Filosofi Gotong Royong menekankan: "Setiap individu berkontribusi untuk kesejahteraan bersama dengan penuh tanggung jawab". Nilai Tanggung Jawab Sosial adalah inti dari adat. Dalam Reog, semua elemen (Singo Barong, Warok, Jathil) berperan penting. Harmoni adalah tanggung jawab kolektif, bukan hanya pemimpin.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content" style="padding: 2.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                            <span style="display: inline-block; width: 40px; height: 40px; background: #EF4444; color: white; border-radius: 50%; line-height: 40px; text-align: center; font-size: 1.5rem; font-weight: bold;">5</span>
+                            <h3 class="card-title" style="margin: 0;">Toleransi vs Harmoni</h3>
+                        </div>
+                        <div style="padding-left: 3.5rem;">
+                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--primary-red);">Jawaban: SALAH ✗</strong></p>
+                            <p style="color: var(--gray); line-height: 1.8;">Toleransi adalah sikap menerima perbedaan (pasif), sedangkan Harmoni adalah keseimbangan aktif dari kerja sama. Reog memadukan berbagai elemen menjadi satu kesatuan. Nilai Keseimbangan Hidup bukan sekadar toleransi, tapi keseimbangan fisik, mental, spiritual. Ponorogo mencapai harmoni sejati melalui kolaborasi aktif.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="background: linear-gradient(135deg, var(--primary-red) 0%, var(--forest) 100%); color: white;">
+                    <div class="card-content" style="padding: 2.5rem;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🦁</div>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--gold);">Kesimpulan</h3>
+                            <p style="line-height: 1.8; color: rgba(255,255,255,0.9);">Budaya Ponorogo mengajarkan bahwa harmoni dalam keberagaman bukan sekadar toleransi pasif, melainkan kolaborasi aktif yang menghasilkan produktivitas dan kelestarian budaya. Setiap elemen masyarakat memiliki peran penting dalam menciptakan keseimbangan yang indah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aplikasi Harmoni dalam Isu Terkini -->
+        <div style="margin-top: 6rem;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; text-align: center; margin-bottom: 1rem; color: var(--primary-red);" class="fade-in">Aplikasi Harmoni dalam Isu Terkini</h2>
+            <p style="text-align: center; color: var(--gray); font-size: 1.2rem; margin-bottom: 4rem;" class="fade-in">Isu-isu terkini menunjukkan bahwa penerapan harmoni harus komprehensif untuk menjaga stabilitas Kabupaten Ponorogo</p>
+            
+            <!-- Isu 1: Harmoni Budaya -->
+            <div style="background: linear-gradient(135deg, rgba(139, 30, 63, 0.05) 0%, rgba(44, 85, 48, 0.05) 100%); padding: 3rem; border-radius: 20px; margin-bottom: 3rem; border-left: 5px solid var(--gold);" class="fade-in">
+                <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+                    <span style="font-size: 2.5rem; background: var(--gold); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🎭</span>
+                    <div>
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary-red); margin-bottom: 1rem;">1. Harmoni Budaya (Meredam Konflik Klaim Budaya)</h3>
+                        <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--dark);">Isu:</strong> Seniman Reog Ponorogo merespons klaim Malaysia dengan demonstrasi selama sebulan penuh setiap malam setelah shalat Isya, di mana para seniman memberikan orasi dan mengadakan pertunjukan Reog sebagai bentuk penegasan identitas budaya.</p>
+                        <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--dark);">Penerapan di Ponorogo:</strong> Festival Nasional Reog Ponorogo (FNRP) ke-XXIX tahun 2024 berlangsung dari 2 hingga 5 Juli 2024, dengan 37 grup dari berbagai daerah di Indonesia. Grebeg Suro telah menjadi event terbaik nomor dua se-Indonesia pada tahun 2023.</p>
+                        <p style="color: var(--gray); line-height: 1.8;"><strong style="color: var(--dark);">Tantangan:</strong> Kelompok minoritas (seperti Hindu) terkait akses tempat ibadah menunjukkan bahwa upaya harmoni perlu terus diperkuat untuk mencapai kesetaraan yang nyata.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Isu 2: Harmoni Sosial-Ekonomi -->
+            <div style="background: linear-gradient(135deg, rgba(139, 30, 63, 0.05) 0%, rgba(44, 85, 48, 0.05) 100%); padding: 3rem; border-radius: 20px; margin-bottom: 3rem; border-left: 5px solid var(--gold);" class="fade-in">
+                <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+                    <span style="font-size: 2.5rem; background: var(--gold); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">💼</span>
+                    <div>
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary-red); margin-bottom: 1rem;">2. Harmoni Sosial-Ekonomi (Mendorong Produktivitas)</h3>
+                        <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--dark);">Isu:</strong> Kabupaten Ponorogo menghadapi masalah sosial seperti kesenjangan ekonomi, sengketa kepemilikan tanah, kekerasan dalam rumah tangga, dan kurangnya kesadaran hukum di kalangan masyarakat.</p>
+                        <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--dark);">Implikasi:</strong> Bupati Ponorogo berharap pagelaran akbar Festival Reog mampu menjadi magnet bagi warga sehingga mampu meningkatkan perekonomian masyarakat dan membangkitkan ratusan UMKM.</p>
+                        <p style="color: var(--gray); line-height: 1.8;"><strong style="color: var(--dark);">Penerapan:</strong> Lembaga Bantuan Hukum (LBH) Ponorogo memediasi perselisihan keluarga mengenai warisan dengan menjelaskan mekanisme hukum, menyelenggarakan lokakarya, seminar, dan diskusi untuk meningkatkan kesadaran hukum.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Isu 3: Harmoni Lintas Agama -->
+            <div style="background: linear-gradient(135deg, rgba(139, 30, 63, 0.05) 0%, rgba(44, 85, 48, 0.05) 100%); padding: 3rem; border-radius: 20px; margin-bottom: 3rem; border-left: 5px solid var(--gold);" class="fade-in">
+                <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+                    <span style="font-size: 2.5rem; background: var(--gold); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🕌</span>
+                    <div>
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary-red); margin-bottom: 1rem;">3. Harmoni Lintas Agama (Klepu sebagai Model)</h3>
+                        <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--dark);">Isu:</strong> Penelitian tentang "Mengenal Kearifan Lokal di Klepu Ponorogo: Praktik Hubungan Sosial Lintas Agama dan Mekanisme Pencegahan Konflik" menunjukkan bahwa kearifan lokal terbukti mampu menjaga harmoni sosial.</p>
+                        <p style="color: var(--gray); line-height: 1.8;"><strong style="color: var(--dark);">Penerapan:</strong> Desa Klepu menjadi contoh nyata bagaimana Muslim dan Hindu hidup berdampingan dengan damai. CAF Mampiro Festival Camp berlangsung 12-14 Juli 2024 di Desa Wisata Klepu, menunjukkan desa ini menjadi destinasi wisata budaya yang inklusif.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Isu 4: Harmoni Spiritual-Tradisi -->
+            <div style="background: linear-gradient(135deg, rgba(139, 30, 63, 0.05) 0%, rgba(44, 85, 48, 0.05) 100%); padding: 3rem; border-radius: 20px; margin-bottom: 3rem; border-left: 5px solid var(--gold);" class="fade-in">
+                <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+                    <span style="font-size: 2.5rem; background: var(--gold); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🙏</span>
+                    <div>
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary-red); margin-bottom: 1rem;">4. Harmoni Spiritual-Tradisi (Grebeg Suro & Larungan)</h3>
+                        <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--dark);">Penerapan:</strong> Laku Tirakatan Malam 1 Suro berlangsung pada 6 Juli 2024, dimulai dari empat titik (Babadan, Pulung, Balong, dan Kauman) sampai Alun-alun Ponorogo. Larungan Telaga Ngebel diadakan pada 6-7 Juli 2024.</p>
+                        <p style="color: var(--gray); line-height: 1.8;"><strong style="color: var(--dark);">Nilai:</strong> Ritual tradisional Larungan Sesaji Telaga Ngebel bertujuan melestarikan budaya lokal dan mempromosikan Ponorogo sebagai destinasi wisata budaya di tingkat nasional dan internasional. Tradisi ini mempersatukan komunitas dalam kebersamaan spiritual yang menjaga keseimbangan antara manusia, alam, dan leluhur.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Isu 5-7 dalam Cards Grid -->
+            <div class="cards-grid" style="margin-top: 4rem;">
+                <div class="card">
+                    <div class="card-content" style="padding: 2.5rem;">
+                        <div style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;">⚖️</div>
+                        <h3 class="card-title" style="text-align: center;">5. Harmoni Politik & Governance</h3>
+                        <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--dark);">Isu:</strong> Bupati Sugiri Sancoko menyatakan event Grebeg Suro 2024 tidak akan mendapat kucuran dana besar dari APBD karena tidak ingin membebani APBD Kabupaten Ponorogo.</p>
+                        <p style="color: var(--gray); line-height: 1.8;"><strong style="color: var(--dark);">Implikasi:</strong> Keputusan ini menunjukkan transparansi dan tanggung jawab fiscal governance. Harmoni memerlukan kepemimpinan bijaksana dalam mengelola sumber daya publik sambil melestarikan budaya.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content" style="padding: 2.5rem;">
+                        <div style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;">🎓</div>
+                        <h3 class="card-title" style="text-align: center;">6. Harmoni Pendidikan & Generasi Muda</h3>
+                        <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--dark);">Penerapan:</strong> Festival Reog Remaja XX tahun 2024 berlangsung dari 28 Juni hingga 1 Juli 2024 di Alun-alun Kabupaten Ponorogo. Grup Reog Gajah Manggolo dari SMAN 1 Ponorogo menjadi juara FNRP XXIX.</p>
+                        <p style="color: var(--gray); line-height: 1.8;"><strong style="color: var(--dark);">Nilai:</strong> Partisipasi aktif pelajar dan mahasiswa menunjukkan regenerasi budaya yang sehat dan komitmen generasi muda terhadap identitas lokal.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content" style="padding: 2.5rem;">
+                        <div style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;">🌍</div>
+                        <h3 class="card-title" style="text-align: center;">7. Harmoni Global & UNESCO</h3>
+                        <p style="color: var(--gray); line-height: 1.8; margin-bottom: 1rem;"><strong style="color: var(--dark);">Milestone:</strong> Pada 2-7 Desember 2024, Reog Ponorogo akan ditetapkan sebagai Warisan Budaya Tak Benda Dunia oleh UNESCO di Paraguay.</p>
+                        <p style="color: var(--gray); line-height: 1.8;"><strong style="color: var(--dark);">Implikasi:</strong> Pengakuan internasional memperkuat identitas lokal dan membuktikan bahwa harmoni internal Ponorogo mampu menghasilkan budaya yang diakui dunia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kesimpulan Isu Terkini -->
+            <div style="background: linear-gradient(135deg, var(--primary-red) 0%, var(--forest) 100%); color: white; padding: 4rem; border-radius: 20px; margin-top: 4rem; text-align: center;" class="fade-in">
+                <div style="font-size: 4rem; margin-bottom: 1.5rem;">🦁</div>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 2rem; color: var(--gold);">Kesimpulan Isu Terkini</h3>
+                <p style="line-height: 1.9; font-size: 1.1rem; max-width: 1000px; margin: 0 auto; color: rgba(255,255,255,0.95);">
+                    Kabupaten Ponorogo menunjukkan penerapan harmoni yang <strong style="color: var(--gold);">multidimensi</strong> dalam menjaga stabilitas melalui festival budaya sebagai respons konstruktif terhadap konflik klaim, pemberdayaan ekonomi melalui UMKM dan pariwisata budaya, pendidikan hukum untuk mencegah konflik sosial, tradisi spiritual yang inklusif, model desa harmonis sebagai contoh lintas agama, regenerasi budaya melalui pelibatan generasi muda, governance transparan dalam pengelolaan event budaya, dan pengakuan global yang memperkuat identitas lokal.
+                </p>
+                <p style="line-height: 1.9; font-size: 1.2rem; max-width: 900px; margin: 2rem auto 0; font-weight: 600; color: var(--gold);">
+                    Harmoni di Ponorogo bukan sekadar toleransi pasif, melainkan kolaborasi aktif yang menciptakan stabilitas ekonomi, sosial, dan budaya berkelanjutan!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="peta" class="map-section">
+        <h2 class="section-title fade-in">Rencanakan Kunjungan Anda</h2>
+        <p class="section-subtitle fade-in">Temukan keindahan dan pesona Ponorogo</p>
+        
+        <div class="cards-grid" style="margin-bottom: 4rem;">
+            <div class="card">
+                <img src="images/telaga.jpeg" alt="Telaga Ngebel - Danau alami di kaki Gunung Wilis" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Telaga Ngebel</h3>
+                    <p class="card-text">Danau alami yang terletak di kaki Gunung Wilis dengan pemandangan indah dan udara sejuk. Tempat sempurna untuk menikmati ketenangan alam dan ritual spiritual tradisi Larungan.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/alun_alun.jpg" alt="Alun-alun Ponorogo - Pusat kegiatan dan pertunjukan Reog" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Alun-alun Ponorogo</h3>
+                    <p class="card-text">Pusat kegiatan masyarakat dan arena utama pertunjukan Reog Ponorogo. Di sini Anda dapat menyaksikan langsung keindahan tarian Reog yang memukau setiap acara budaya.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/monumen.jpg" alt="Monumen Reog - Landmark ikonik Kabupaten Ponorogo" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Monumen Reog</h3>
+                    <p class="card-text">Landmark ikonik yang menjadi simbol kebanggaan Ponorogo. Monumen megah ini menampilkan patung Singo Barong yang menjadi spot foto favorit wisatawan.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/Air-Terjun-Pletuk.jpg" alt="Air Terjun Pletuk - Keindahan alam yang menyejukkan" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Air Terjun Pletuk</h3>
+                    <p class="card-text">Air terjun eksotis yang tersembunyi di tengah hutan hijau. Suara gemericik air dan kesegaran alamnya memberikan pengalaman wisata alam yang tak terlupakan.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <button class="close-map" id="closeMap">×</button>
+            <div class="map-placeholder" id="mapPlaceholder">
+                <h3>📍 Peta Lokasi Wisata</h3>
+                <p style="max-width: 600px; margin: 1rem auto; line-height: 1.8;">
+                    Jelajahi semua destinasi wisata menarik di Kabupaten Ponorogo. Dari wisata alam, budaya, hingga kuliner khas yang siap memanjakan Anda.
+                </p>
+                <button class="cta-button" id="showMapBtn" style="background: var(--primary-red); color: white; border-color: var(--primary-red); margin-top: 2rem; cursor: pointer;">Lihat Peta Interaktif</button>
+            </div>
+            <div id="interactive-map">
+                <div class="map-overlay">
+                    <h4>🗺️ Destinasi Wisata Ponorogo</h4>
+                    <p>Klik pada marker untuk melihat informasi detail setiap lokasi wisata.</p>
+                </div>
+                <iframe 
+                    src="https://www.google.com/maps/d/embed?mid=1example&ehbc=2E312F" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    id="mapFrame">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">PONOROGO</div>
+        <p>The Spirit of Joy and Heritage</p>
+        <p style="margin-top: 2rem; font-size: 0.9rem;">&copy; 2024 Kabupaten Ponorogo. Warisan budaya untuk Indonesia.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.preloader').classList.add('hidden');
+            }, 1500);
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('.value-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') {
+                    e.preventDefault();
+                    return;
+                }
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight);
+            }
+        });
+
+        document.querySelectorAll('.cta-button').forEach(button => {
+            // Skip tombol peta interaktif karena sudah ada handler khusus
+            if (button.id === 'showMapBtn') return;
+            
+            button.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.5)';
+            });
+            button.addEventListener('mouseleave', function() {
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.card, .value-card');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight - 100;
+                if (isVisible) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll();
+
+        // Interactive Map Functionality
+        const showMapBtn = document.getElementById('showMapBtn');
+        const mapPlaceholder = document.getElementById('mapPlaceholder');
+        const interactiveMap = document.getElementById('interactive-map');
+        const closeMapBtn = document.getElementById('closeMap');
+        const mapFrame = document.getElementById('mapFrame');
+
+        // Koordinat Ponorogo
+        const ponorogoLat = -7.8746;
+        const ponorogoLng = 111.4625;
+
+        showMapBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Update iframe dengan peta Ponorogo yang sebenarnya
+            mapFrame.src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126333.69283424892!2d${ponorogoLng}!3d${ponorogoLat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7851f45dbfffff%3A0x5027a76e3561e30!2sPonorogo%2C%20East%20Java%2C%20Indonesia!5e0!3m2!1sen!2sid!4v1234567890`;
+            
+            // Tampilkan peta
+            mapPlaceholder.style.display = 'none';
+            interactiveMap.classList.add('active');
+            closeMapBtn.classList.add('active');
+            
+            // Smooth scroll to map
+            interactiveMap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        closeMapBtn.addEventListener('click', function() {
+            // Sembunyikan peta
+            interactiveMap.classList.remove('active');
+            closeMapBtn.classList.remove('active');
+            mapPlaceholder.style.display = 'block';
+            
+            // Reset iframe
+            mapFrame.src = '';
+        });
+
+        // Destinasi wisata dengan koordinat
+        const destinations = [
+            { name: 'Telaga Ngebel', lat: -7.7167, lng: 111.4833 },
+            { name: 'Alun-alun Ponorogo', lat: -7.8746, lng: 111.4625 },
+            { name: 'Monumen Reog', lat: -7.8700, lng: 111.4650 },
+            { name: 'Air Terjun Pletuk', lat: -7.7500, lng: 111.5000 }
+        ];
+    </script>
+</body>
+</html>
